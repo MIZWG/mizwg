@@ -13,7 +13,7 @@
         }
         /* Header/logo Title */
 header {
-            background-image: url('sea_ice_background.jpeg'); /* Update this path to your image file */
+            background-image: url('\sea_ice_background.jpeg'); /* Update this path to your image file */
             background-size: cover;
             background-position: center;
             color: white;
