@@ -12,12 +12,14 @@
             background-color: #f4f4f4;
         }
         /* Header/logo Title */
-.header {
-  padding: 80px;
-  text-align: center;
-  background: #02A4FB;
-  color: white;
-}
+header {
+            background-image: url('sea_ice_background.jpg'); /* Update this path to your image file */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
         section {
             margin: 20px;
             padding: 20px;
