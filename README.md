@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,13 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
+        /* Header/logo Title */
+.header {
+  padding: 80px;
+  text-align: center;
+  background: #02A4FB;
+  color: white;
+}
         section {
             margin: 20px;
             padding: 20px;
