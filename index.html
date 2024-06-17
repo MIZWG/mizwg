@@ -7,28 +7,40 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 30;
             background-color: #f4f4f4;
+			margin: 0;
+    padding: 20px;
+    padding-bottom: 100px; /* Increased padding at the bottom to add more scrolling space */
+    background-color: #f4f4f4;
+    position: relative; /* Ensures the footer positioning context is set to the body */
+    min-height: 100vh; /* Full view height */
         }
         /* Header/logo Title */
 header {
-            background-image: url('\sea_ice_background.jpeg'); /* Update this path to your image file */
-            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+			background-image: url('sea_ice_background_Strip.jpeg'); /* Update this path to your image file */
+			background-size: contain;
+            background-repeat: no-repeat;
             background-position: center;
             color: white;
-            padding: 40px 20px;
+            padding: 10px 20px;
             text-align: center;
+            height: 300px; /* Set a specific height for the header */
+	
         }
         section {
             margin: 20px;
-            padding: 20px;
+            padding: 30px;
             background-color: white;
             border-radius: 8px;
         }
         footer {
             text-align: center;
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color: #70B7DD;
             color: white;
             position: fixed;
             width: 100%;
@@ -43,6 +55,24 @@ header {
     <header>
         <h1>Marginal Ice Zone Dynamics Working Group</h1>
     </header>
+	
+	<nav>
+    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #70B7DD;">
+        <li style="float: left;">
+            <a href="home.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;background-color: #1a3abc;">Home</a>
+        </li>
+        <!--<li style="float: left;">
+            <a href="#about" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">About</a>
+        </li>-->
+        <li style="float: left;">
+            <a href="members.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Members</a>
+        </li>
+       <!-- <li style="float: left;">
+            <a href="#contact" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Contact</a>
+        </li>-->
+    </ul>
+</nav>
+
 
     <section>
         <h2>Welcome!</h2>
@@ -56,13 +86,16 @@ header {
     </section>
 
     <section>
-        <h2>Upcoming Meetings</h2>
-        <p>The first virtual meeting is scheduled for early to mid-June. It will span three days to accommodate various time zones of all our group members. Exact dates and agenda will be sent out in late May.</p>
+        <h2>Upcoming Activities</h2>
+		<p>We are currently deviding all members into subgroups. If you have not been assigned a subgroup please contact us.</p>
+        <p>The first virtual meeting is scheduled for September. It will span three days to accommodate various time zones of all our group members. Exact dates and agenda will be sent out in late August.</p>
         <p>Please mark your calendars and stay tuned for more details!</p>
     </section>
+	
 
+<p><br></p>
     <footer>
-        <p>Contact us at <a href="mailto:info@cryosphericsciences.org">info@cryosphericsciences.org</a> for more information.</p>
+        <p>Contact us at <a href="mailto:noa.kraitzman@mq.edu.au">noa.kraitzman@mq.edu.au</a> for more information.</p>
     </footer>
 </body>
 </html>
