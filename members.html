@@ -97,6 +97,9 @@ header {
             justify-content: space-around;
             padding: 1px;
         }
+		.member-container.top-line {
+        justify-content: center;
+    }
         .member {
             background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -110,6 +113,7 @@ header {
             height: auto;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
+			flex: 1; /* Make sure all members take equal space */
         }
         .member-info {
             padding: 10px;
@@ -117,11 +121,14 @@ header {
         .member-info h3, .member-info p {
             margin: 2px 0;
         }
-	.member-container.top-line {
-        justify-content: center;
-    }
-	.member-container.last-line {
-        justify-content: flex-start;
+	    .empty-space {
+			            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin: 10px;
+            width: 250px;
+            overflow: hidden;
+			visibility: hidden; /* Make empty space visible but not shown */
     }
     </style>
 </head>
@@ -327,8 +334,7 @@ header {
     </div>
 	
 </div>
-	
-	<div class="member-container last-line">
+<div class="member-container">
     <div class="member">
         <!--<img src="path_to_member_photo.jpg" alt="Member Name">-->
         <div class="member-info">
@@ -336,6 +342,10 @@ header {
             <p>University of Washington</p>
         </div>
     </div>
+		<!-- Adding empty spaces to align with the row above -->
+    <div class="empty-space"></div>
+    <div class="empty-space"></div>
+	<div class="empty-space"></div>
    
 </div>
 	
