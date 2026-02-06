@@ -1,123 +1,257 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQ0N1LR0LJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IACS Working Group on Dynamic Processes in the Marginal Ice Zone - International collaboration for Antarctic sea ice research">
 
-  gtag('config', 'G-EQ0N1LR0LJ');
-</script>
-    
-    <title>MIZ Dynamics Working Group</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 30;
-            background-color: #f4f4f4;
-			margin: 0;
-    padding: 20px;
-    padding-bottom: 100px; /* Increased padding at the bottom to add more scrolling space */
-    background-color: #f4f4f4;
-    position: relative; /* Ensures the footer positioning context is set to the body */
-    min-height: 100vh; /* Full view height */
-        }
-        /* Header/logo Title */
-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-			background-image: url('sea_ice_background_Strip.jpeg'); /* Update this path to your image file */
-			background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            height: 300px; /* Set a specific height for the header */
-	
-        }
-        section {
-            margin: 20px;
-            padding: 30px;
-            background-color: white;
-            border-radius: 8px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 20px;
-            background-color: #70B7DD;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        a {
-            color: #007BFF;
-        }
-    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQ0N1LR0LJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EQ0N1LR0LJ');
+    </script>
+
+    <title>MIZ Dynamics Working Group | IACS</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Marginal Ice Zone Dynamics Working Group</h1>
+        <div class="header-content">
+            <h1>Marginal Ice Zone Dynamics Working Group</h1>
+            <p class="tagline">An IACS-sponsored international research collaboration</p>
+        </div>
     </header>
-	
-	<nav>
-    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #70B7DD;">
-        <li style="float: left;">
-            <a href="home.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;background-color: #1a3abc;">Home</a>
-        </li>
-        <!--<li style="float: left;">
-            <a href="#about" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">About</a>
-        </li>-->
-        <li style="float: left;">
-            <a href="members.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Members</a>
-        </li>
-		<li style="float: left;">
-            <a href="Conference2026.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Research Workshop 2026</a>
-        </li>
-		<li style="float: left;">
-            <a href="Conference2024.html" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Conference 2024</a>
-        </li>
-       <!-- <li style="float: left;">
-            <a href="#contact" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Contact</a>
-        </li>-->
-    </ul>
-</nav>
 
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="Conference2026.html">Workshop 2026</a></li>
+            <li><a href="Conference2024.html">Conference 2024</a></li>
+        </ul>
+    </nav>
 
-    <section>
-        <h2>Welcome!</h2>
-        <p>We are thrilled to announce that the IACS Bureau has officially approved our proposal for a Working Group on the dynamic processes in the Marginal Ice Zone (MIZ). This group aims to deepen our understanding of the MIZ and its critical role in the polar regions.</p>
-    </section>
+    <!-- Polar Sidebar Widget -->
+    <aside class="polar-sidebar" id="polar-sidebar">
+        <div class="polar-sidebar-toggle" onclick="togglePolarSidebar()">&#10052;</div>
+        <div class="polar-sidebar-content">
+            <!-- Antarctic Section -->
+            <div class="polar-mini antarctic" title="Antarctic - McMurdo Station">
+                <div class="polar-mini-icon">&#127757;</div>
+                <div class="polar-mini-label">Antarctic</div>
+                <div class="polar-mini-season" id="antarctic-season">...</div>
+                <div class="polar-mini-temp" id="antarctic-temp">--</div>
+                <div class="polar-mini-clock" id="antarctic-clock">--:--</div>
+            </div>
+            <a href="https://nsidc.org/arcticseaicenews/charctic-interactive-sea-ice-graph/" target="_blank" class="polar-mini ice-chart" title="Antarctic Sea Ice Extent">
+                <img src="https://nsidc.org/data/seaice_index/images/daily_images/S_daily_extent.png" alt="Antarctic Ice">
+                <span>Antarctic Ice</span>
+            </a>
+            <!-- Arctic Section -->
+            <div class="polar-mini arctic" title="Arctic - Svalbard">
+                <div class="polar-mini-icon">&#127759;</div>
+                <div class="polar-mini-label">Arctic</div>
+                <div class="polar-mini-season" id="arctic-season">...</div>
+                <div class="polar-mini-temp" id="arctic-temp">--</div>
+                <div class="polar-mini-clock" id="arctic-clock">--:--</div>
+            </div>
+            <a href="https://nsidc.org/arcticseaicenews/charctic-interactive-sea-ice-graph/" target="_blank" class="polar-mini ice-chart" title="Arctic Sea Ice Extent">
+                <img src="https://nsidc.org/data/seaice_index/images/daily_images/N_daily_extent.png" alt="Arctic Ice">
+                <span>Arctic Ice</span>
+            </a>
+        </div>
+    </aside>
 
-    <section>
-        <h2>About Our Working Group</h2>
-        <p>This working group is composed of international experts focusing on studying the dynamic processes that occur in the Marginal Ice Zone. Our goal is to foster significant scientific advances through collaborative efforts.</p>
-        <p>Read the <a href="https://cryosphericsciences.org/activities/miz/">full accepted proposal</a> for more detailed information.</p>
-    </section>
+    <main>
+        <!-- Featured: Upcoming Workshop -->
+        <section class="card highlight fade-in">
+            <h2>MATRIX Research Workshop 2026</h2>
+            <p>Join us for our flagship in-person research program at MATRIX, Creswick, Victoria.</p>
+            <p><strong>21 September - 2 October 2026</strong></p>
+            <div class="countdown" id="countdown">Loading countdown...</div>
+            <a href="Conference2026.html" class="btn btn-primary" style="margin-top: 1rem;">Learn More & Register</a>
+        </section>
 
+        <!-- About Section -->
+        <section class="card">
+            <h2>About Our Working Group</h2>
+            <p>The <strong>Marginal Ice Zone (MIZ)</strong> is the dynamic transition region between the open ocean and pack ice, where waves, currents, and ice interact in complex ways. Understanding these processes is critical for predicting how polar regions respond to climate change.</p>
+            <p>Our IACS-approved working group brings together international experts in mathematical modelling, physical oceanography, and cryospheric science to advance our understanding of MIZ dynamics through collaborative research.</p>
+            <p><a href="https://cryosphericsciences.org/activities/miz/" target="_blank">Read our accepted proposal on the IACS website</a></p>
+        </section>
 
-    <section>
-        <h2>Upcoming Activities</h2>
-		<p>Our virtual meeting has been rescheduled and is now set for <b>October 15th to 17th, 2024</b>. Registration is now open. <a href="Conference2024.html">Click here for more details</a></p> 
-	<!--	<hr>
-		<p style="color: lightgrey;">We are currently dividing all members into subgroups. If you have not been assigned a subgroup please contact us.</p>
-        <p style="color: lightgrey;">Our first virtual meeting is scheduled for September 17th (Tuesday - Australia), 18th (Wednesday - East Coast USA), and 19th (Thursday - West Coast USA), 2024.</p>
+        <!-- Two-column grid -->
+        <div class="grid grid-2">
+            <!-- Research Focus -->
+            <section class="card">
+                <h2>Research Focus</h2>
+                <ul class="timeline">
+                    <li><strong>Wave-Ice Interactions</strong><br>Mathematical models of how ocean waves propagate through and break up sea ice</li>
+                    <li><strong>Floe Size Distribution</strong><br>Understanding the evolution and statistics of ice floe sizes</li>
+                    <li><strong>Biogeochemical Feedbacks</strong><br>How MIZ dynamics affect ocean chemistry and ecosystems</li>
+                    <li><strong>Climate Modelling</strong><br>Improving MIZ representation in global climate models</li>
+                </ul>
+            </section>
 
-        <p style="color: lightgrey;">Please mark your calendars and stay tuned for more details!</p>
--->
-    </section>
-	
+            <!-- Recent Milestones -->
+            <section class="card">
+                <h2>Milestones</h2>
+                <ul class="timeline">
+                    <li><strong>May 2024</strong><br>Working group officially approved by IACS Bureau</li>
+                    <li><strong>October 2024</strong><br>First Virtual Conference - 24 participants, 12 speakers across 3 sessions</li>
+                    <li><strong>May 2025</strong><br>MATRIX Research Program application accepted</li>
+                    <li><strong>September 2026</strong><br>In-person workshop at MATRIX, Victoria</li>
+                </ul>
+            </section>
+        </div>
 
-<p><br></p>
+        <!-- MATRIX Partnership -->
+        <section class="card feature">
+            <div class="flex-row">
+                <div class="content">
+                    <h2>MATRIX Partnership</h2>
+                    <p>Our 2026 research program is generously sponsored by <a href="https://www.matrix-inst.org.au/" target="_blank">MATRIX</a>, Australia's international research institute for the mathematical sciences.</p>
+                    <p>Over 10 days of focused workshops and collaborative sessions, participants will develop advanced mathematical frameworks for MIZ processes, integrate theory with observational data, and identify critical research priorities.</p>
+                </div>
+                <div class="sidebar logo-container">
+                    <a href="https://www.matrix-inst.org.au/" target="_blank">
+                        <img src="MATRIX.png" alt="MATRIX Research Institute Logo">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved -->
+        <section class="card">
+            <h2>Get Involved</h2>
+            <p>We welcome researchers interested in the dynamics of the marginal ice zone. Whether you're a mathematical modeller, physical oceanographer, or field scientist, there are opportunities to contribute.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="members.html" class="btn btn-primary">View Members</a>
+                <a href="mailto:noa.kraitzman@mq.edu.au" class="btn btn-outline">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        <p>Contact us at <a href="mailto:noa.kraitzman@mq.edu.au">noa.kraitzman@mq.edu.au</a> for more information.</p>
+        <div class="footer-links">
+            <a href="https://cryosphericsciences.org/activities/miz/" target="_blank">IACS Page</a>
+            <a href="https://www.matrix-inst.org.au/events/mathematical-modelling-of-dynamic-processes-in-the-marginal-ice-zone/" target="_blank">MATRIX Event</a>
+            <a href="mailto:noa.kraitzman@mq.edu.au">Contact</a>
+        </div>
+        <p>&copy; 2024-2026 MIZ Dynamics Working Group | <a href="mailto:noa.kraitzman@mq.edu.au">noa.kraitzman@mq.edu.au</a></p>
     </footer>
+
+    <script>
+        // Countdown to MATRIX Workshop
+        const countDownDate = new Date("2026-09-21T09:00:00+10:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date("2026-09-21T09:00:00+10:00");
+
+            if (now >= target) {
+                document.getElementById("countdown").innerHTML = "The workshop is happening now!";
+                return;
+            }
+
+            let months = (target.getFullYear() - now.getFullYear()) * 12 + (target.getMonth() - now.getMonth());
+            let days = target.getDate() - now.getDate();
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            const parts = [];
+            if (months > 0) parts.push(months + (months === 1 ? " month" : " months"));
+            parts.push(days + (days === 1 ? " day" : " days"));
+
+            document.getElementById("countdown").innerHTML = parts.join(", ");
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Toggle polar sidebar
+        function togglePolarSidebar() {
+            document.getElementById('polar-sidebar').classList.toggle('collapsed');
+        }
+
+        // Polar Conditions: Seasons
+        function updatePolarConditions() {
+            const month = new Date().getMonth();
+            let antarcticSeason, arcticSeason;
+
+            if (month >= 11 || month <= 1) {
+                antarcticSeason = "☀️ Summer";
+                arcticSeason = "❄️ Winter";
+            } else if (month >= 2 && month <= 4) {
+                antarcticSeason = "🍂 Autumn";
+                arcticSeason = "🌱 Spring";
+            } else if (month >= 5 && month <= 7) {
+                antarcticSeason = "❄️ Winter";
+                arcticSeason = "☀️ Summer";
+            } else {
+                antarcticSeason = "🌱 Spring";
+                arcticSeason = "🍂 Autumn";
+            }
+
+            document.getElementById("antarctic-season").textContent = antarcticSeason;
+            document.getElementById("arctic-season").textContent = arcticSeason;
+        }
+
+        // Fetch temperatures from Open-Meteo API
+        async function fetchPolarTemperatures() {
+            const locations = [
+                { id: "antarctic-temp", lat: -77.85, lon: 166.67 },
+                { id: "arctic-temp", lat: 78.22, lon: 15.63 }
+            ];
+
+            for (const loc of locations) {
+                try {
+                    const response = await fetch(
+                        `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m&timezone=auto`
+                    );
+                    const data = await response.json();
+                    if (data.current) {
+                        document.getElementById(loc.id).textContent = `${data.current.temperature_2m}°C`;
+                    }
+                } catch (error) {
+                    document.getElementById(loc.id).textContent = "--";
+                }
+            }
+        }
+
+        // Update polar clocks
+        function updatePolarClocks() {
+            const now = new Date();
+            // McMurdo Station - New Zealand Time (Pacific/Auckland)
+            const antarcticTime = now.toLocaleTimeString('en-US', {
+                timeZone: 'Pacific/Auckland',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            });
+            // Svalbard - Central European Time (Europe/Oslo)
+            const arcticTime = now.toLocaleTimeString('en-US', {
+                timeZone: 'Europe/Oslo',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            });
+            document.getElementById('antarctic-clock').textContent = antarcticTime;
+            document.getElementById('arctic-clock').textContent = arcticTime;
+        }
+
+        // Initialize
+        updatePolarConditions();
+        fetchPolarTemperatures();
+        updatePolarClocks();
+        setInterval(fetchPolarTemperatures, 30 * 60 * 1000);
+        setInterval(updatePolarClocks, 1000);
+    </script>
 </body>
 </html>
-
