@@ -118,25 +118,31 @@
         const countDownDate = new Date("2026-09-21T09:00:00+10:00").getTime();
 
         function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+            const now = new Date();
+            const target = new Date("2026-09-21T09:00:00+10:00");
 
-            if (distance < 0) {
+            if (now >= target) {
                 document.getElementById("countdown").innerHTML = "The workshop is happening now!";
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            let months = (target.getFullYear() - now.getFullYear()) * 12 + (target.getMonth() - now.getMonth());
+            let days = target.getDate() - now.getDate();
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
 
-            document.getElementById("countdown").innerHTML =
-                days + " days, " + hours + " hours, " + minutes + " min, " + seconds + " sec";
+            const parts = [];
+            if (months > 0) parts.push(months + (months === 1 ? " month" : " months"));
+            parts.push(days + (days === 1 ? " day" : " days"));
+
+            document.getElementById("countdown").innerHTML = parts.join(", ");
         }
 
         updateCountdown();
-        setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown, 60000);
     </script>
 </body>
 </html>
