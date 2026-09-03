@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MATRIX 2026 — Marginal Ice Zone Workshop Program</title>
+
+<style>
+  :root {
+    --paper:#F7F7F5; --surface:#FFFFFF; --ink:#17191A;
+    --ink-soft:#41464A; --ink-faint:#7C8286;
+    --rule:#D4D3CD; --rule-soft:#EEEDE9; --band:#B3BABF;
+    --grid-line:#585C5E;
+    /* Fills sit on a deliberate lightness ladder so they separate in greyscale and in
+       print, not by hue alone. Meals stay near-neutral: they are the least informative
+       cells. Measured with the dataviz validator over ALL pairs, the worst pair is
+       dE 8.2 light and 8.3 dark (was 3.6 / 6.3), which clears the >=8 categorical
+       target. Do not lighten these without re-measuring. Four blocks define the
+       palette -- :root, the prefers-color-scheme block, and both data-theme blocks. */
+    --fill-lec:#BCF3F7; --fill-col:#FFF500; --fill-brk:#F7DCBC;
+    --fill-free:#FFFFFF; --fill-soc:#EDC2FF; --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='10'%3E%3Cpath d='M0 5 q 3.5 -3.5 7 0 t 7 0 t 7 0 t 7 0' fill='none' stroke='%23F9E7FF' stroke-width='1.5'/%3E%3C/svg%3E"); --fill-rep:#71D64F;
+    --on-fill:#1B1D1E; --dot:#9FD5D9; --stripe-a:#D6D6D6; --stripe-b:#BDBDBD;
+    --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#131412; --surface:#1B1D1B; --ink:#E9E9E5;
+      --ink-soft:#A7ACA9; --ink-faint:#7E8482;
+      --rule:#333834; --rule-soft:#222523; --band:#242724;
+      --grid-line:#8A908D;
+      --fill-lec:#0A524E; --fill-col:#666005; --fill-brk:#3F3324;
+      --fill-free:#1B1D1B; --fill-soc:#795A90; --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='10'%3E%3Cpath d='M0 5 q 3.5 -3.5 7 0 t 7 0 t 7 0 t 7 0' fill='none' stroke='%23A88CC2' stroke-width='1.5'/%3E%3C/svg%3E"); --fill-rep:#71D64F;
+      --on-fill:#F2F2EE; --dot:#1F605C; --stripe-a:#2E343A; --stripe-b:#1E2329;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#131412; --surface:#1B1D1B; --ink:#E9E9E5;
+    --ink-soft:#A7ACA9; --ink-faint:#7E8482;
+    --rule:#333834; --rule-soft:#222523; --band:#242724;
+    --grid-line:#8A908D;
+    --fill-lec:#0A524E; --fill-col:#666005; --fill-brk:#3F3324;
+    --fill-free:#1B1D1B; --fill-soc:#795A90; --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='10'%3E%3Cpath d='M0 5 q 3.5 -3.5 7 0 t 7 0 t 7 0 t 7 0' fill='none' stroke='%23A88CC2' stroke-width='1.5'/%3E%3C/svg%3E"); --fill-rep:#71D64F;
+    --on-fill:#F2F2EE; --dot:#1F605C; --stripe-a:#2E343A; --stripe-b:#1E2329;
+  }
+  :root[data-theme="light"] {
+    --paper:#F7F7F5; --surface:#FFFFFF; --ink:#17191A;
+    --ink-soft:#41464A; --ink-faint:#7C8286;
+    --rule:#D4D3CD; --rule-soft:#EEEDE9; --band:#B3BABF;
+    --grid-line:#585C5E;
+    /* Fills sit on a deliberate lightness ladder so they separate in greyscale and in
+       print, not by hue alone. Meals stay near-neutral: they are the least informative
+       cells. Measured with the dataviz validator over ALL pairs, the worst pair is
+       dE 8.2 light and 8.3 dark (was 3.6 / 6.3), which clears the >=8 categorical
+       target. Do not lighten these without re-measuring. Four blocks define the
+       palette -- :root, the prefers-color-scheme block, and both data-theme blocks. */
+    --fill-lec:#BCF3F7; --fill-col:#FFF500; --fill-brk:#F7DCBC;
+    --fill-free:#FFFFFF; --fill-soc:#EDC2FF; --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='10'%3E%3Cpath d='M0 5 q 3.5 -3.5 7 0 t 7 0 t 7 0 t 7 0' fill='none' stroke='%23F9E7FF' stroke-width='1.5'/%3E%3C/svg%3E"); --fill-rep:#71D64F;
+    --on-fill:#1B1D1E; --dot:#9FD5D9; --stripe-a:#D6D6D6; --stripe-b:#BDBDBD;
+  }
+
+  body { background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:92rem; margin:0 auto; padding:2.75rem 1.25rem 5rem; display:flex; flex-direction:column; gap:2.75rem; }
+
+  header.masthead { display:flex; flex-direction:column; gap:.6rem; padding-bottom:1.5rem; border-bottom:2px solid var(--ink); }
+  .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .masthead h1 { font-family:var(--serif); font-size:clamp(1.6rem,3.4vw,2.35rem); font-weight:600; line-height:1.14; letter-spacing:-.015em; text-wrap:balance; max-width:30ch; }
+  .masthead .dates { font-family:var(--mono); font-size:.9rem; }
+  .masthead .meta { font-size:.82rem; color:var(--ink-faint); }
+
+  .legend { display:flex; flex-wrap:wrap; gap:.7rem 1.6rem; font-size:.84rem; color:var(--ink-soft);
+            padding:.9rem 1.1rem; background:var(--surface); border:1px solid var(--rule); border-left:4px solid var(--ink); border-radius:3px; }
+  .legend div { display:flex; align-items:center; gap:.45rem; }
+  .legend hr { width:100%; border:none; border-top:1px solid var(--rule); margin:.1rem 0; }
+  .swatch { display:inline-block; width:1.5rem; height:1rem; border-radius:2px; border:1px solid rgba(128,128,128,.35); }
+  .swatch.dots { background-image:radial-gradient(var(--dot) 1px, transparent 1.1px); background-size:5px 5px; }
+
+  .week-band { display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem; padding-bottom:.55rem; margin-bottom:.9rem; border-bottom:1px solid var(--ink); }
+  .week-band h2 { font-family:var(--serif); font-size:1.5rem; font-weight:600; letter-spacing:-.012em; }
+  .week-band span { font-family:var(--mono); font-size:.78rem; color:var(--ink-soft); margin-left:auto; }
+
+  .scroll { overflow-x:auto; border:1px solid var(--rule); border-radius:3px; background:var(--surface); }
+  .scroll:has(table.grid) { border-color:var(--grid-line); }
+  /* fixed layout so every day column is the same width; without it the long screening
+     text pulls Thursday 24 wider than the rest. Only the time column is sized. */
+  table.grid { width:100%; min-width:66rem; border-collapse:collapse; font-size:.79rem; line-height:1.42;
+               table-layout:fixed; }
+  table.grid th, table.grid td { border:1px solid var(--grid-line); padding:.45rem .6rem; vertical-align:top; text-align:left; }
+
+  table.grid thead th { background:var(--band); font-size:.7rem; font-weight:700; letter-spacing:.05em;
+                        text-transform:uppercase; color:var(--ink); white-space:nowrap; position:sticky; top:0; z-index:2; }
+  /* the header cells are nowrap so the dates never break; the chair line must opt out,
+     or a two-name chair is clipped at the column edge. */
+  .th-chair { display:block; margin-top:.2rem; font-size:.63rem; font-weight:500; letter-spacing:0;
+              text-transform:none; color:var(--ink-soft); white-space:normal; }
+
+  /* the weekend columns are narrow; every weekday column then divides the rest equally,
+     which table-layout:fixed does on its own once these two are pinned. */
+  table.grid th.col-wknd { width:6rem; }
+  .col-time { width:5.4rem; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.71rem;
+              color:var(--ink); white-space:nowrap; background:var(--band); position:sticky; left:0; z-index:1; }
+  thead .col-time { z-index:3; }
+  .col-time .slot-note { display:block; margin-top:.25rem; font-family:var(--sans);
+                         font-size:.62rem; font-weight:400; letter-spacing:0;
+                         color:var(--ink-soft); white-space:normal; }
+
+  /* the talks fill is the pale one after the 26 August swap, and it measures dE 2.6
+     against the meals grey and 5.2 against the white free-day cells. The dot texture is
+     what separates all three, so it travels with the pale colour rather than staying on
+     collaboration. Do not remove it without re-measuring. */
+  table.grid td.c-lec { background-color:var(--fill-lec); color:var(--on-fill);
+                        background-image:radial-gradient(var(--dot) 1.1px, transparent 1.2px);
+                        background-size:8px 8px; }
+  table.grid td.c-col { background:var(--fill-col); color:var(--on-fill); font-size:.75rem;
+                        text-align:center; }
+  table.grid td.c-brk { background:var(--fill-brk); color:var(--on-fill); font-size:.75rem; text-align:center; }
+  table.grid td.c-free { background:var(--fill-free); color:var(--on-fill); font-size:.75rem; }
+  table.grid td.c-soc  { background-color:var(--fill-soc); color:var(--on-fill);
+                         background-image:var(--wave); background-size:28px 10px; }
+  /* the reports fill is one value in both modes, so it cannot use var(--on-fill), which
+     flips per mode. #71D64F is light, giving 9.2:1 against dark ink and only 1.7:1 against
+     light, so the cell carries dark text in both modes. */
+  table.grid td.c-rep { background:var(--fill-rep); color:#17191A; }
+  table.grid td.c-rep .who, table.grid td.c-rep b, table.grid td.c-rep .kind,
+  table.grid td.c-rep .dur { color:#17191A; }
+  table.grid td.c-rep .kind, table.grid td.c-rep .dur { opacity:.72; }
+  table.grid td.c-todo { background:repeating-linear-gradient(45deg, var(--stripe-a) 0 9px, var(--stripe-b) 9px 18px);
+                         color:var(--on-fill); text-align:center; }
+  table.grid td.c-nil { background:var(--surface); color:var(--ink-faint); font-size:.75rem; }
+  table.grid td.c-brk.left { text-align:left; }
+
+  /* merged cells sit centred in the space they occupy.
+     Selectors carry table.grid + the attribute so they outrank the base td rule. */
+  table.grid td[colspan], table.grid td[rowspan] { vertical-align:middle; }
+  table.grid td.c-todo[colspan], table.grid td.c-todo[rowspan],
+  table.grid td.c-col[colspan],  table.grid td.c-col[rowspan],
+  table.grid td.c-free[rowspan], table.grid td.c-nil[rowspan],
+  table.grid td.c-brk[colspan],  table.grid td.c-brk[rowspan] { text-align:center; }
+  table.grid td.c-brk.left[colspan], table.grid td.c-brk.left[rowspan] { text-align:left; }
+  table.grid td.c-lec .who, table.grid td.c-lec b,
+  table.grid td.c-soc .who, table.grid td.c-soc b,
+  table.grid td.c-free .dur { color:var(--on-fill); }
+  table.grid td.c-lec .kind, table.grid td.c-lec .dur,
+  table.grid td.c-soc .kind, table.grid td.c-soc .dur { color:var(--on-fill); opacity:.62; }
+  table.grid td.c-lec .s-chair { color:var(--on-fill); opacity:.75; }
+  /* a talk cell holding nothing but a name centres it. The block display does the
+     horizontal centring on its own, so the :has() rule only adds the vertical and
+     degrades harmlessly where it is unsupported. Cells carrying a time, a venue or
+     more than one name are not matched and stay top-left. */
+  table.grid td.c-lec .who:only-child { display:block; text-align:center; }
+  table.grid td.c-lec:has(> .who:only-child) { vertical-align:middle; }
+
+  .s-chair { display:block; margin-top:.15rem; font-size:.71rem; color:var(--ink-soft); }
+  .s-chair b { font-weight:600; color:var(--ink); }
+
+
+
+  .venue { display:block; margin-top:.18rem; font-size:.63rem; letter-spacing:.01em;
+            font-weight:400; color:inherit; opacity:.68; }
+  hr.split { border:none; border-top:1px solid currentColor; opacity:.45; margin:.3rem 0; }
+  .kind { display:block; font-size:.58rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:.2rem; }
+  .who  { font-weight:700; color:var(--ink); }
+  .dur  { font-family:var(--mono); font-size:.66rem; color:var(--ink-faint); }
+
+  .notes { display:grid; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr)); gap:1rem; }
+  .note { padding:.95rem 1.1rem; background:var(--surface); border:1px solid var(--rule); border-radius:3px; font-size:.85rem; color:var(--ink-soft); }
+  .note h3 { font-family:var(--serif); font-size:1rem; font-weight:600; color:var(--ink); margin-bottom:.35rem; }
+  .note strong { color:var(--ink); font-weight:600; }
+
+  section > h2.sec { font-family:var(--serif); font-size:1.35rem; font-weight:600; letter-spacing:-.012em; margin-bottom:.9rem; }
+
+  table.simple { width:100%; border-collapse:collapse; font-size:.85rem; }
+  table.simple th { text-align:left; font-size:.66rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-faint); padding:.7rem .9rem; border-bottom:1px solid var(--rule); }
+  table.simple td { padding:.6rem .9rem; border-bottom:1px solid var(--rule-soft); vertical-align:top; }
+  table.simple tr:last-child td { border-bottom:none; }
+  table.simple .m { font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.78rem; color:var(--ink-soft); white-space:nowrap; }
+
+  footer { padding-top:1.5rem; border-top:1px solid var(--rule); font-size:.82rem; color:var(--ink-soft); display:flex; flex-direction:column; gap:.3rem; }
+  footer b { color:var(--ink); font-weight:600; }
+
+  @media print {
+    @page { size:A4 landscape; margin:8mm; }
+    body { background:#fff; font-size:8pt; }
+    .wrap { max-width:none; padding:0; gap:.6rem; }
+    /* on paper the masthead collapses to a single band so a whole week fits beneath it */
+    header.masthead { display:block; padding-bottom:.25rem; border-bottom-width:1px; }
+    .masthead .eyebrow { display:none; }
+    .masthead h1 { display:inline; font-size:11.5pt; max-width:none; }
+    .masthead .dates { display:inline; font-size:7.5pt; margin-left:.7rem; }
+    .masthead .meta { display:inline; font-size:6.5pt; margin-left:.7rem; }
+    .legend { padding:.25rem .5rem; font-size:6.4pt; gap:.15rem .8rem; border-left-width:3px; }
+    .swatch { width:1.1rem; height:.7rem; }
+    .week-band { margin-bottom:.35rem; padding-bottom:.25rem; break-after:avoid; }
+    .week-band h2 { font-size:12pt; }
+    .week-band span { font-size:7pt; }
+    .scroll { overflow:visible; break-inside:avoid; }
+    table.grid { min-width:0; font-size:6.4pt; }
+    table.grid th, table.grid td { padding:.26rem .3rem; }
+    table.grid thead th { font-size:6.2pt; }
+    .col-time { width:4.2rem; font-size:6pt; }
+    .col-time .slot-note { font-size:5.4pt; }
+    table.grid thead th, .col-time { position:static; }
+    table.grid td { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    /* one week per sheet, and the heading never leaves its grid behind */
+    section + section { break-before:page; }
+    /* the tiled dot and wave textures rasterise to one image per cell, which took the
+       exported PDF to 13 MB. On paper a hairline inset ring does the same job. */
+    table.grid td.c-lec, table.grid td.c-soc { background-image:none !important; }
+    table.grid td.c-lec { box-shadow:inset 0 0 0 1.4pt var(--dot); }
+    table.grid td.c-soc { box-shadow:inset 0 0 0 1.4pt #C9A6F0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">MATRIX · Creswick, Victoria</p>
+    <h1>Mathematical Modelling of Dynamic Processes in the Marginal Ice Zone</h1>
+    <p class="dates">Monday 21 September &ndash; Friday 2 October 2026</p>
+    <p class="meta">Draft program · 3 September 2026</p>
+  </header>
+
+  <div class="legend">
+    <div><span class="swatch dots" style="background-color:var(--fill-lec)"></span> Talks &middot; Lecture Theatre</div>
+    <div><span class="swatch" style="background:var(--fill-col)"></span> Collaboration and discussion</div>
+    <div><span class="swatch" style="background:var(--fill-brk)"></span> Meals and breaks</div>
+    <div><span class="swatch" style="background:var(--fill-soc)"></span> Social events</div>
+    <div><span class="swatch" style="background:var(--fill-rep)"></span> Working group reports</div>
+    <div><span class="swatch" style="background:repeating-linear-gradient(45deg,var(--stripe-a) 0 5px,var(--stripe-b) 5px 10px)"></span> Format still to be decided</div>
+  </div>
+
+  <section>
+    <div class="week-band">
+      <h2>Week 1</h2>
+      <span>Sunday 20 &ndash; Saturday 26 September</span>
+    </div>
+
+    <div class="scroll">
+      <table class="grid">
+        <thead>
+          <tr>
+            <th class="col-time">Time</th>
+            <th class="col-wknd">Sunday 20</th><th>Monday 21<span class="th-chair">Chair Noa Kraitzman</span></th><th>Tuesday 22<span class="th-chair">Chair Ian Eisenman</span></th><th>Wednesday 23<span class="th-chair">Chair Mike Meylan</span></th>
+            <th>Thursday 24<span class="th-chair">Chair Luke Bennetts</span></th><th>Friday 25<span class="th-chair">Chair Ian Eisenman</span></th><th class="col-wknd">Saturday 26</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-time">08:00&ndash;09:00<span class="slot-note">Dining Hall</span></td>
+            <td class="c-free" rowspan="12">Arrivals<br><span class="dur">Shuttle from Ballarat</span></td>
+            <td class="c-brk" colspan="6">Breakfast</td>
+          </tr>
+          <tr>
+            <td class="col-time">09:00&ndash;09:45</td>
+            <td class="c-lec"><span class="who">Welcome and Creswick campus orientation</span><br><span class="dur">MATRIX and Creswick staff</span></td>
+            <td class="c-col" colspan="4">Collaboration and discussion</td>
+            <td class="c-free" rowspan="12">Free day<br><span class="dur">Go hike and explore</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">09:45&ndash;10:45<span class="slot-note">50 min talk<br>10 min Q&amp;A</span></td>
+            <td class="c-lec"><span class="who">Vernon Squire</span></td>
+            <td class="c-lec"><span class="who">Kenneth Golden</span></td>
+            <td class="c-lec"><span class="who">Patricia Langhorne</span></td>
+            <td class="c-lec"><span class="who">Ian Eisenman</span></td>
+            <td class="c-lec"><span class="who">Guillaume Boutin</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">10:45&ndash;11:15<span class="slot-note">MATRIX House</span></td>
+            <td class="c-brk" colspan="5">Morning break</td>
+          </tr>
+          <tr>
+            <td class="col-time">11:15&ndash;12:30</td>
+            <td class="c-col" colspan="5">Collaboration and discussion</td>
+          </tr>
+          <tr>
+            <td class="col-time">12:30&ndash;13:30<span class="slot-note">Dining Hall</span></td>
+            <td class="c-brk" colspan="5">Lunch</td>
+          </tr>
+          <tr>
+            <td class="col-time">13:30&ndash;14:00</td>
+            <td class="c-todo" rowspan="2"><span class="who">One slide introductions</span><br><span class="dur">Everyone, in turn. Format still to be decided</span></td>
+            <td class="c-lec"><span class="who">Nico Mokus</span></td>
+            <td class="c-lec"><span class="who">Rob Massom</span></td>
+            <td class="c-lec"><span class="who">Waylon Wu</span></td>
+            <td class="c-lec"><span class="who">Noah Day</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">14:05&ndash;14:35</td>
+            <td class="c-lec"><span class="who">Yawei Chen</span></td>
+            <td class="c-lec"><span class="who">Alex Fraser</span></td>
+            <td class="c-lec"><span class="who">Noa Kraitzman</span></td>
+            <td class="c-lec"><span class="who">Siobhan O'Farrell</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">14:35&ndash;15:10<span class="slot-note">MATRIX House</span></td>
+            <td class="c-brk" colspan="5">Afternoon break</td>
+          </tr>
+          <tr>
+            <td class="col-time">15:10&ndash;16:00</td>
+            <td class="c-lec"><span class="who">Hardik Gaur</span><br><span class="dur">15:10&ndash;15:40 &middot; 25 min talk, 5 min Q&amp;A</span></td>
+            <td class="c-col" rowspan="2">Collaboration and discussion</td>
+            <td class="c-col" rowspan="3">Collaboration and discussion</td>
+            <td class="c-col">Collaboration and discussion</td>
+            <td class="c-col" rowspan="3">Collaboration and discussion</td>
+          </tr>
+          <tr>
+            <td class="col-time">16:00&ndash;17:00</td>
+            <td class="c-col" rowspan="2">Collaboration and discussion</td>
+            <td class="c-soc" rowspan="2"><em>Mighty Indeed</em>, followed by Q&amp;A with <span class="who">Patricia Langhorne</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">17:00&ndash;18:00</td>
+            <td class="c-soc">MATRIX wine and cheese<span class="venue">Recreational Room</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">18:00&ndash;19:00</td>
+            <td class="c-brk left">Pre-program dinner<span class="venue">Farmers&rsquo; Arms, Creswick</span></td>
+            <td class="c-brk" colspan="5">Dinner<span class="venue">Dining Hall</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="week-band">
+      <h2>Week 2</h2>
+      <span>Sunday 27 September &ndash; Friday 2 October</span>
+    </div>
+
+    <div class="scroll">
+      <table class="grid">
+        <thead>
+          <tr>
+            <th class="col-time">Time</th>
+            <th class="col-wknd">Sunday 27</th><th>Monday 28<span class="th-chair">Chair Noa Kraitzman</span></th><th>Tuesday 29<span class="th-chair">Chair Mike Meylan</span></th>
+            <th>Wednesday 30<span class="th-chair">Chair Luke Bennetts</span></th><th>Thursday 1 October<span class="th-chair">Chair Alex Fraser</span></th><th>Friday 2 October<span class="th-chair">Chair Noa Kraitzman and Mike Meylan</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-time">08:00&ndash;09:00<span class="slot-note">Dining Hall</span></td>
+            <td class="c-brk" colspan="5">Breakfast</td>
+            <td class="c-brk">Breakfast and check out</td>
+          </tr>
+          <tr>
+            <td class="col-time">09:00&ndash;09:45</td>
+            <td class="c-free" rowspan="12">Free day<br><span class="dur">Go hike and explore</span></td>
+            <td class="c-col" colspan="5">Collaboration and discussion</td>
+          </tr>
+          <tr>
+            <td class="col-time">09:45&ndash;10:45<span class="slot-note">50 min talk<br>10 min Q&amp;A</span></td>
+            <td class="c-lec"><span class="who">Christina Schallenberg</span></td>
+            <td class="c-lec"><span class="who">Aikaterini Tavri</span></td>
+            <td class="c-lec"><span class="who">Gillian Cheong</span></td>
+            <td class="c-lec"><span class="who">Qinghua Yang</span></td>
+            <td class="c-lec"><span class="kind">Closing remarks</span><span class="who">Noa Kraitzman</span>, <span class="who">Mike Meylan</span> and <span class="who">Luke Bennetts</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">10:45&ndash;11:15<span class="slot-note">MATRIX House</span></td>
+            <td class="c-brk" colspan="5">Morning break</td>
+          </tr>
+          <tr>
+            <td class="col-time">11:15&ndash;12:30</td>
+            <td class="c-col" colspan="4">Collaboration and discussion</td>
+            <td class="c-col">Collaboration and discussion</td>
+          </tr>
+          <tr>
+            <td class="col-time">12:30&ndash;13:30<span class="slot-note">Dining Hall</span></td>
+            <td class="c-brk" colspan="4">Lunch</td>
+            <td class="c-brk">Lunch and departure</td>
+          </tr>
+          <tr>
+            <td class="col-time">13:30&ndash;14:00</td>
+            <td class="c-lec"><span class="who">Klaus Meiners</span></td>
+            <td class="c-lec"><span class="who">Luke Bennetts</span></td>
+            <td class="c-lec"><span class="who">Mike Meylan</span></td>
+            <td class="c-rep" rowspan="2"><span class="kind">Working group reports</span>Each group reports on what it got done<br><span class="dur">13:30&ndash;14:35, continuing 15:10&ndash;16:10</span></td>
+            <td class="c-nil" rowspan="7">Program closes<br>after lunch</td>
+          </tr>
+          <tr>
+            <td class="col-time">14:05&ndash;14:35</td>
+            <td class="c-lec"><span class="who">Isaac Klapper</span></td>
+            <td class="c-lec"><span class="who">Phillip Reid</span></td>
+            <td class="c-lec"><span class="who">Stuart Hawkins</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">14:35&ndash;15:10<span class="slot-note">MATRIX House</span></td>
+            <td class="c-brk" colspan="4">Afternoon break</td>
+          </tr>
+          <tr>
+            <td class="col-time">15:10&ndash;16:00</td>
+            <td class="c-col" rowspan="3">Collaboration and discussion</td>
+            <td class="c-todo" rowspan="2"><span class="kind">Panel discussion</span><span class="s-chair">Chair <b>Mike Meylan</b></span><span class="venue">Lecture Theatre</span></td>
+            <td class="c-col" rowspan="3">Collaboration and discussion</td>
+            <td class="c-rep"><span class="kind">Working group reports</span>continue<br><span class="dur">15:10&ndash;16:10</span><span class="venue">Lecture Theatre</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">16:00&ndash;17:00</td>
+            <td class="c-col" rowspan="2">Collaboration and discussion<br><span class="dur">from 16:10</span></td>
+          </tr>
+          <tr>
+            <td class="col-time">17:00&ndash;18:00</td>
+            <td class="c-col">Collaboration and discussion</td>
+          </tr>
+          <tr>
+            <td class="col-time">18:00&ndash;19:00<span class="slot-note">Dining Hall</span></td>
+            <td class="c-brk" colspan="4">Dinner</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+
+
+</div>
+
+</body>
+</html>
