@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Talks and abstracts for the MATRIX Research Workshop 2026 on mathematical modelling of dynamic processes in the Marginal Ice Zone">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQ0N1LR0LJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EQ0N1LR0LJ');
+    </script>
+
+    <title>MATRIX Research Workshop 2026 - Talks and Abstracts</title>
+    <link rel="stylesheet" href="css/styles.css">
+<style>
+
+  /* ------------------------------------------------------------------ *
+   * Talks and abstracts, page specific rules only.
+   *
+   * Everything structural (header, nav, main, .card, .btn, footer, the
+   * colour variables and the responsive breakpoints) comes from the site
+   * stylesheet, css/styles.css, exactly as on every other page. Only the
+   * things the site has never needed are defined here, being the talk
+   * rows, the expanding abstract panels, the search controls and the on
+   * now marking. Every colour below is a site variable, so a change to
+   * the site palette carries into this page for free.
+   * ------------------------------------------------------------------ */
+
+  .week-span { color:var(--text-light); font-weight:600; margin-top:-1rem; }
+
+  /* The banner card holds nothing but its heading, and the site gives every h2 a bottom
+     margin for the body text that normally follows, which left a gap under the rule. */
+  .card.highlight h2:only-child { margin-bottom:0; }
+
+  /* The search row sits inside the banner. The site's outline button is primary blue on
+     transparent, which disappears against the dark end of the banner's own gradient, so
+     inside the banner it takes the same white ground as the search field beside it. */
+  .card.highlight .controls { margin-top:1.1rem; }
+  .card.highlight .controls .btn-outline {
+    background:var(--white); border-color:var(--white); color:var(--primary-blue);
+  }
+  .card.highlight .controls .btn-outline:hover {
+    background:var(--light-blue); color:var(--deep-blue);
+  }
+
+  .controls { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+  .controls input[type="search"] {
+    flex:1 1 18rem; padding:.7rem 1rem; font:inherit; color:var(--text-dark);
+    background:var(--white); border:2px solid var(--light-blue);
+    border-radius:8px; transition:var(--transition); -webkit-appearance:none;
+  }
+  .controls input[type="search"]:focus {
+    outline:none; border-color:var(--accent-blue);
+    box-shadow:0 0 0 3px rgba(112,183,221,.4);
+  }
+
+  .nowbar { margin:1.25rem 0 0; padding:.8rem 1.1rem; border-radius:8px;
+            background:var(--light-blue); color:var(--deep-blue); font-weight:600; }
+  .nowbar b { color:var(--primary-blue); }
+  .nowbar a { margin-left:.4rem; }
+
+  .day { margin-bottom:2rem; }
+  .day:last-child { margin-bottom:0; }
+  .day > h3 { color:var(--primary-blue); margin-bottom:.35rem;
+              padding-bottom:.35rem; border-bottom:2px solid var(--light-blue); }
+
+  ul.talks { list-style:none; padding:0; margin:0; }
+  ul.talks > li { border-bottom:1px solid var(--light-blue); }
+  ul.talks > li:last-child { border-bottom:none; }
+
+  button.row {
+    width:100%; display:grid; gap:.3rem 1rem; align-items:baseline;
+    grid-template-columns:7rem minmax(8rem,13rem) 1fr 1.25rem;
+    padding:.85rem .6rem; margin:0; background:none; border:none;
+    text-align:left; font:inherit; color:inherit; cursor:pointer;
+    border-radius:8px; transition:var(--transition);
+  }
+  li.talk button.row:hover { background:var(--ice-blue); }
+  button.row:focus-visible { outline:3px solid var(--accent-blue); outline-offset:2px; }
+
+  .t { color:var(--text-light); font-weight:600; font-variant-numeric:tabular-nums; }
+  .who { color:var(--deep-blue); font-weight:700; }
+  .ttl { color:var(--text-dark); }
+  .ttl.pending { color:var(--text-light); font-style:italic; }
+
+  .chev { display:inline-block; color:var(--accent-blue); justify-self:end;
+          transition:var(--transition); }
+  li.open .chev { transform:rotate(90deg); }
+  li.empty .chev { visibility:hidden; }
+  li.empty button.row { cursor:default; }
+
+  .abs { padding:0 .6rem 1.25rem; }
+  .abs > div { background:var(--ice-blue); border-left:4px solid var(--accent-blue);
+               border-radius:8px; padding:1.25rem 1.5rem; }
+  .abs p:last-child { margin-bottom:0; }
+
+  /* The on now and next markers reuse the site badge shape. */
+  .tag { display:inline-block; margin-left:.5rem; padding:.15rem .7rem;
+         border-radius:20px; font-size:.75rem; font-weight:600;
+         vertical-align:middle; background:var(--accent-blue); color:var(--white); }
+  li.is-now { background:var(--light-blue); border-radius:8px; }
+  li.is-next .tag { background:var(--text-light); }
+
+  .none { color:var(--text-light); font-style:italic; }
+
+  /* The site lifts a card on hover, which is right for a card you click as a whole and
+     wrong for one holding two dozen clickable rows, since the target moves as you aim at
+     it. The shadow still responds, so the card is not inert. */
+  .week.card:hover { transform:none; }
+
+  @media (max-width:768px) {
+    button.row { grid-template-columns:1fr 1.25rem; }
+    .t { grid-column:1; }
+    .chev { grid-column:2; grid-row:1; }
+    .who, .ttl { grid-column:1 / -1; }
+  }
+
+  @media print {
+    nav, .controls, .nowbar, .chev, footer { display:none !important; }
+    .abs[hidden] { display:block !important; }
+    .card { box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+    .card:hover { transform:none; }
+    body { background:var(--white); }
+    header { padding:1.5rem; }
+  }
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Marginal Ice Zone Dynamics Working Group</h1>
+            <p class="tagline">An IACS-sponsored international research collaboration</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="Conference2026.html" class="active">Workshop 2026</a></li>
+            <li><a href="Conference2024.html">Conference 2024</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="card highlight">
+            <h2>MATRIX Research Workshop 2026 - Talks and Abstracts</h2>
+            <div class="controls">
+                <input id="q" type="search" placeholder="Search speaker, title or abstract"
+                       aria-label="Search speaker, title or abstract" autocomplete="off">
+                <button id="all" type="button" class="btn btn-outline">Expand all</button>
+            </div>
+            <p class="nowbar" id="nowbar" hidden></p>
+        </section>
+
+        <section class="week card">
+          <h2>Week 1</h2>
+          <p class="week-span">Monday 21 September &ndash; Friday 25 September</p>
+            <div class="day">
+              <h3>Monday 21 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="vernon squire a diachronic traipse across the marginal ice zone: context, fieldwork, models, disgressions, challenges and a chimæra my aspiration is to give a semi-historical talk with snapshots of the multifaceted marginal ice zone research work that has contributed to our current understanding, acknowledging that my own pursuits have related to wave-ice interaction primarily, save for some bizarre idiosyncratic jaunts into other sea-ice-related topics. so, i will talk about … 1. sea ice in the environment for modellers and a wee peek at miz processes 2. background for non-wave-ice-interaction folk, including in the miz where waves are probably the definitive stimulus 3. some senescent observations 4. modelling paradigms 5. a personal chimæra.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Vernon Squire</span><span class="ttl">A Diachronic Traipse Across the Marginal Ice Zone: Context, Fieldwork, Models, Disgressions, Challenges and a Chimæra</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>My aspiration is to give a semi-historical talk with snapshots of the multifaceted marginal ice zone research work that has contributed to our current understanding, acknowledging that my own pursuits have related to wave-ice interaction primarily, save for some bizarre idiosyncratic jaunts into other sea-ice-related topics.</p><p>So, I will talk about …</p><p>1. Sea ice in the environment for modellers and a wee peek at MIZ processes</p><p>2. Background for non-wave-ice-interaction folk, including in the MIZ where waves are probably the definitive stimulus</p><p>3. Some senescent observations</p><p>4. Modelling paradigms</p><p>5. A personal chimæra.</p></div></div>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Tuesday 22 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="kenneth golden mathematics of the marginal ice zone the marginal ice zone (miz) is the dynamic transitional region between dense pack ice and open ocean. we’ll tour some of the mathematics used in modeling this complex multiscale component of earth’s sea ice covers. we consider key processes ranging from the dramatic annual cycle of the arctic miz on oceanic scales and the evolution of the sea ice concentration field, to wave-ice interactions and advection-diffusion in floe dynamics and thermodynamics. we’ll also discuss modeling biological activity in the miz, from algal bloom dynamics and nutrient transport through the porous brine microstructure, to polar bear travel paths that minimize energy loss. mathematically we’ll encounter homogenization for partial differential equations, percolation theory, fractal geometry, random matrix theory, dynamical systems, and uncertainty quantification.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Kenneth Golden</span><span class="ttl">Mathematics of the Marginal Ice Zone</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>The marginal ice zone (MIZ) is the dynamic transitional region between dense pack ice and open ocean. We’ll tour some of the mathematics used in modeling this complex multiscale component of Earth’s sea ice covers. We consider key processes ranging from the dramatic annual cycle of the Arctic MIZ on oceanic scales and the evolution of the sea ice concentration field, to wave-ice interactions and advection-diffusion in floe dynamics and thermodynamics. We’ll also discuss modeling biological activity in the MIZ, from algal bloom dynamics and nutrient transport through the porous brine microstructure, to polar bear travel paths that minimize energy loss. Mathematically we’ll encounter homogenization for partial differential equations, percolation theory, fractal geometry, random matrix theory, dynamical systems, and uncertainty quantification.</p></div></div>
+                </li>
+                <li class="talk empty" data-find="nico mokus ">
+                  <button class="row" type="button"><span class="t">13:30–14:00</span><span class="who">Nico Mokus</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+                <li class="talk empty" data-find="yawei chen ">
+                  <button class="row" type="button"><span class="t">14:05–14:35</span><span class="who">Yawei Chen</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Wednesday 23 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="rob massom influences of waves on (antarctic) sea-ice albedo and seasonal melting, and physical and biological feedbacks climate models largely underestimate the average rate of satellite-observed antarctic sea-ice retreat each summer, to undermine 1) understanding and attribution of sea-ice trends and recent abrupt change and 2) confidence in projected sea-ice conditions and climate. such models account for wave effects on floe-size distributions and floe lateral and basal melting, but neglect surface melting and feedbacks. emerging research based on observations and simple modelling (massom et al., 2026, https://doi.org/10.5194/tc-20-3271-2026) highlights an additional role of waves in generating surface and interior melting of floes, by overwashing them and removing their snow cover, flooding them, and/or pulverising them into unconsolidated “wave slush”. in these ways, waves both remove the insulating effect of snow and reduce the ice albedo by an estimated 0.38–0.54 compared to snow-covered first-year ice, leading to enhanced absorption of solar radiation by the ice that increases its vertical melt rate by up to an estimated ~5 cm day⁻¹ (under representative antarctic spring-summer miz conditions). moreover and in a beautiful interplay of wave-driven physics and biology, coincident rapid proliferation of algae in the wave-modified ice is estimated to reduce its albedo by a further 0.1 and increase its vertical melt-rate enhancement to up to ~6 cm day⁻¹. it is further proposed that this “wave melting” is potentially accelerated by a wave-induced ice–albedo feedback mechanism similar to that associated with arctic melt ponds but involving seawater rather than freshwater, and that this positive feedback is strengthened by ice-algal greening. floe thinning and weakening by wave melting then also activate additional dynamic–thermodynamic feedbacks by increasing the likelihood of both wave-driven flooding and flexural breakup, leading to further floe melting.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Rob Massom</span><span class="ttl">Influences of waves on (Antarctic) sea-ice albedo and seasonal melting, and physical and biological feedbacks</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>Climate models largely underestimate the average rate of satellite-observed Antarctic sea-ice retreat each summer, to undermine 1) understanding and attribution of sea-ice trends and recent abrupt change and 2) confidence in projected sea-ice conditions and climate. Such models account for wave effects on floe-size distributions and floe lateral and basal melting, but neglect surface melting and feedbacks. Emerging research based on observations and simple modelling (Massom et al., 2026, https://doi.org/10.5194/tc-20-3271-2026) highlights an additional role of waves in generating surface and interior melting of floes, by overwashing them and removing their snow cover, flooding them, and/or pulverising them into unconsolidated “wave slush”. In these ways, waves both remove the insulating effect of snow and reduce the ice albedo by an estimated 0.38–0.54 compared to snow-covered first-year ice, leading to enhanced absorption of solar radiation by the ice that increases its vertical melt rate by up to an estimated ~5 cm day⁻¹ (under representative Antarctic spring-summer MIZ conditions). Moreover and in a beautiful interplay of wave-driven physics and biology, coincident rapid proliferation of algae in the wave-modified ice is estimated to reduce its albedo by a further 0.1 and increase its vertical melt-rate enhancement to up to ~6 cm day⁻¹. It is further proposed that this “wave melting” is potentially accelerated by a wave-induced ice–albedo feedback mechanism similar to that associated with Arctic melt ponds but involving seawater rather than freshwater, and that this positive feedback is strengthened by ice-algal greening. Floe thinning and weakening by wave melting then also activate additional dynamic–thermodynamic feedbacks by increasing the likelihood of both wave-driven flooding and flexural breakup, leading to further floe melting.</p></div></div>
+                </li>
+                <li class="talk" data-find="ian eisenman a possible arctic sea ice tipping point due to the release of subsurface heat in the arctic ocean the arctic ocean is characterized by an ice-covered layer of cold and relatively fresh water above warmer and saltier waters below. it is estimated that enough heat is stored at depth in the arctic ocean to melt all the arctic sea ice many times over. but this heat has historically remained trapped at depth: the seawater density differences are dominated by salinity, making the vertical stratification stable, and the sea ice cover damps wind-generated internal waves that could otherwise mix the warm waters up to the surface. in this talk, i will discuss a positive feedback process involving the release of subsurface heat in the arctic ocean as the sea ice retreats. i will present idealized model results showing that this feedback process can give rise to a hysteresis window bounded by saddle-node bifurcations, featuring an abrupt &quot;tipping point&quot; under global warming when the bifurcation point is crossed. the hysteresis occurs for only a limited range of plausibly realistic parameters, however, and questions remain regarding the likelihood that this potential tipping point could occur under global warming during the coming century. this initial modeling work omits any representation of marginal ice zone (miz) dynamics, treating the surface at each grid point as entirely ice-covered or ice-free. because momentum transfer to the ocean is maximized at intermediate ice concentrations due to form drag from ice floes, wave energy and mixing within the miz are expected to be an important part of the heat-release mechanism. therefore, adding a representation of miz energy transfer would be an important next step.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">13:30–14:00</span><span class="who">Ian Eisenman</span><span class="ttl">A possible Arctic sea ice tipping point due to the release of subsurface heat in the Arctic Ocean</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>The Arctic Ocean is characterized by an ice-covered layer of cold and relatively fresh water above warmer and saltier waters below. It is estimated that enough heat is stored at depth in the Arctic Ocean to melt all the Arctic sea ice many times over. But this heat has historically remained trapped at depth: the seawater density differences are dominated by salinity, making the vertical stratification stable, and the sea ice cover damps wind-generated internal waves that could otherwise mix the warm waters up to the surface.</p><p>In this talk, I will discuss a positive feedback process involving the release of subsurface heat in the Arctic Ocean as the sea ice retreats. I will present idealized model results showing that this feedback process can give rise to a hysteresis window bounded by saddle-node bifurcations, featuring an abrupt &quot;tipping point&quot; under global warming when the bifurcation point is crossed. The hysteresis occurs for only a limited range of plausibly realistic parameters, however, and questions remain regarding the likelihood that this potential tipping point could occur under global warming during the coming century.</p><p>This initial modeling work omits any representation of Marginal Ice Zone (MIZ) dynamics, treating the surface at each grid point as entirely ice-covered or ice-free. Because momentum transfer to the ocean is maximized at intermediate ice concentrations due to form drag from ice floes, wave energy and mixing within the MIZ are expected to be an important part of the heat-release mechanism. Therefore, adding a representation of MIZ energy transfer would be an important next step.</p></div></div>
+                </li>
+                <li class="talk" data-find="patricia langhorne in situ flexural strength and cyclic loading of sea ice in the 1990s, motivated by the need to better understand wave breakup of sea ice, we conducted a series of mechanical measurements on first year antarctic sea ice. in these experiments in situ cantilever beams (approximately 10 m by 1 m by 2 m) were loaded to measure sea ice flexural strength. alternatively, the beams were cyclically driven to failure by loading at their free end by a sinusoidal force of 8 sec period (fatigue). profiles of brine and air fraction, parameters known to influence mechanical properties, can be derived from measured salinity, temperature and density profiles in the ice. some aspects of these experiments have been reported in the literature, but the entire series has not been analysed or archived in a consistent fashion. some data have never been published, while some are challenged by subsequent research. in particular our finding that sea ice is weakened by cyclic loading has since been contested by experiments on fresh and saline ice that show that the flexural strength is increased upon cyclic loading. my aim is to reassess our field data with the more holistic view of our entire suite of experiments as well as the work of others, particularly focusing on the needs of wave-ice modelling. this is work in progress and i’m delighted to have feedback.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">14:05–14:35</span><span class="who">Patricia Langhorne</span><span class="ttl">In situ flexural strength and cyclic loading of sea ice</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>In the 1990s, motivated by the need to better understand wave breakup of sea ice, we conducted a series of mechanical measurements on first year Antarctic sea ice. In these experiments in situ cantilever beams (approximately 10 m by 1 m by 2 m) were loaded to measure sea ice flexural strength. Alternatively, the beams were cyclically driven to failure by loading at their free end by a sinusoidal force of 8 sec period (fatigue). Profiles of brine and air fraction, parameters known to influence mechanical properties, can be derived from measured salinity, temperature and density profiles in the ice.</p><p>Some aspects of these experiments have been reported in the literature, but the entire series has not been analysed or archived in a consistent fashion. Some data have never been published, while some are challenged by subsequent research. In particular our finding that sea ice is weakened by cyclic loading has since been contested by experiments on fresh and saline ice that show that the flexural strength is increased upon cyclic loading.</p><p>My aim is to reassess our field data with the more holistic view of our entire suite of experiments as well as the work of others, particularly focusing on the needs of wave-ice modelling. This is work in progress and I’m delighted to have feedback.</p></div></div>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Thursday 24 September</h3>
+              <ul class="talks">
+                <li class="talk empty" data-find="waylon wu ">
+                  <button class="row" type="button"><span class="t">09:45–10:45</span><span class="who">Waylon Wu</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+                <li class="talk" data-find="hardik gaur incorporating miz in a ‘simpler’ climate model climate models represent complex physical processes through mathematical abstractions, but the complexity of coupled general circulation models can make individual climate processes difficult to isolate. the globally resolved energy balance (greb) model, developed by dommenget and flöter (2011), provides an intermediate-complexity framework that bridges comprehensive climate models and simpler energy-balance models. greb has subsequently been extended through greb-ism, which couples the climate model to a global ice-sheet model and enables exploration of interactions between climate and ice-sheet dynamics. this talk explores the potential for extending this framework towards marginal ice zone (miz) dynamics. rather than presenting an established miz coupling, we will consider what physical processes, variables/ feedback would be needed to connect miz dynamics with the greb framework. the aim is to use the workshop as an opportunity to develop ideas and identify promising directions for future modelling of miz–climate interactions.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">13:30–14:00</span><span class="who">Hardik Gaur</span><span class="ttl">Incorporating MIZ in a ‘Simpler’ Climate Model</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>Climate models represent complex physical processes through mathematical abstractions, but the complexity of coupled general circulation models can make individual climate processes difficult to isolate. The Globally Resolved Energy Balance (GREB) model, developed by Dommenget and Flöter (2011), provides an intermediate-complexity framework that bridges comprehensive climate models and simpler energy-balance models. GREB has subsequently been extended through GREB-ISM, which couples the climate model to a global ice-sheet model and enables exploration of interactions between climate and ice-sheet dynamics.</p><p>This talk explores the potential for extending this framework towards Marginal Ice Zone (MIZ) dynamics. Rather than presenting an established MIZ coupling, we will consider what physical processes, variables/ feedback would be needed to connect MIZ dynamics with the GREB framework. The aim is to use the workshop as an opportunity to develop ideas and identify promising directions for future modelling of MIZ–climate interactions.</p></div></div>
+                </li>
+                <li class="talk empty" data-find="noa kraitzman ">
+                  <button class="row" type="button"><span class="t">14:05–14:35</span><span class="who">Noa Kraitzman</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Friday 25 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="guillaume boutin modelling the wave-affected marginal ice zone: connecting local processes and large-scale impacts the marginal ice zone (miz), at the interface between pack ice and the open ocean, is arguably the most active part of the sea-ice cover. it is a region of rapid ice formation, melt, fragmentation, and deformation, with major impacts on atmosphere-ocean fluxes, marine ecosystems, and human activities that extend well beyond the area occupied by the miz itself. its direct exposure to the open ocean makes waves an important driver of this activity and a defining feature of its dynamics. yet wave-ice interactions remain difficult to represent in models. sea ice modifies wave propagation and attenuation in ways that are highly sensitive to both wave and ice properties, while waves fragment the ice and alter its mobility and mechanical response. how these alterations occur, and how they depend on floe size, remain poorly understood. we investigate these interactions using a coupled modelling framework that combines the spectral wave model wavewatch iii with the sea-ice model nextsim. the framework represents wave-induced fragmentation and its effects on sea-ice dynamics. its originality lies primarily in the way nextsim represents the mechanical response of sea ice to fragmentation. our initial results showed that fragmentation can significantly affect ice mobility when waves penetrate far enough to break thick and compact ice. our first conclusion was therefore that the magnitude of this impact depends strongly on the extent of the wave-affected miz. this result raised a critical question: does the model represent that extent correctly? the wave-affected miz is not directly observed by any single instrument and, as both our results and observational studies have shown, it does not necessarily coincide with conventional miz definitions using sea-ice concentration thresholds. yet the last decade has seen the development of relevant datasets based on satellite altimetry, including icesat-2 and cryosat-2, synthetic-aperture radar, and in situ wave buoys. together, these datasets provide complementary information on floe size, wave penetration, and wave height, allowing us to evaluate the consistency of the simulated miz extent across the arctic. by bringing these observations together, we assess the model’s ability to represent the wave-affected miz at regional to pan-arctic scales over more than a decade. although individual events, high-frequency variability, and regional patterns are not always accurately represented, the model shows encouraging skill in reproducing the large-scale properties and monthly to interannual variability of the wave-affected miz. our results open the possibility of using coupled wave-ice models to investigate the evolution of the miz over recent decades and under future arctic conditions. i will conclude by discussing remaining challenges, including missing local processes, atmospheric feedbacks, and how wave-induced changes in ice properties may affect the wider coupled climate system.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Guillaume Boutin</span><span class="ttl">Modelling the Wave-Affected Marginal Ice Zone: Connecting Local Processes and Large-Scale Impacts</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>The Marginal Ice Zone (MIZ), at the interface between pack ice and the open ocean, is arguably the most active part of the sea-ice cover. It is a region of rapid ice formation, melt, fragmentation, and deformation, with major impacts on atmosphere-ocean fluxes, marine ecosystems, and human activities that extend well beyond the area occupied by the MIZ itself. Its direct exposure to the open ocean makes waves an important driver of this activity and a defining feature of its dynamics. Yet wave-ice interactions remain difficult to represent in models. Sea ice modifies wave propagation and attenuation in ways that are highly sensitive to both wave and ice properties, while waves fragment the ice and alter its mobility and mechanical response. How these alterations occur, and how they depend on floe size, remain poorly understood.</p><p>We investigate these interactions using a coupled modelling framework that combines the spectral wave model WAVEWATCH III with the sea-ice model neXtSIM. The framework represents wave-induced fragmentation and its effects on sea-ice dynamics. Its originality lies primarily in the way neXtSIM represents the mechanical response of sea ice to fragmentation. Our initial results showed that fragmentation can significantly affect ice mobility when waves penetrate far enough to break thick and compact ice. Our first conclusion was therefore that the magnitude of this impact depends strongly on the extent of the wave-affected MIZ.</p><p>This result raised a critical question: does the model represent that extent correctly? The wave-affected MIZ is not directly observed by any single instrument and, as both our results and observational studies have shown, it does not necessarily coincide with conventional MIZ definitions using sea-ice concentration thresholds. Yet the last decade has seen the development of relevant datasets based on satellite altimetry, including ICESat-2 and CryoSat-2, synthetic-aperture radar, and in situ wave buoys. Together, these datasets provide complementary information on floe size, wave penetration, and wave height, allowing us to evaluate the consistency of the simulated MIZ extent across the Arctic.</p><p>By bringing these observations together, we assess the model’s ability to represent the wave-affected MIZ at regional to pan-Arctic scales over more than a decade. Although individual events, high-frequency variability, and regional patterns are not always accurately represented, the model shows encouraging skill in reproducing the large-scale properties and monthly to interannual variability of the wave-affected MIZ.</p><p>Our results open the possibility of using coupled wave-ice models to investigate the evolution of the MIZ over recent decades and under future Arctic conditions. I will conclude by discussing remaining challenges, including missing local processes, atmospheric feedbacks, and how wave-induced changes in ice properties may affect the wider coupled climate system.</p></div></div>
+                </li>
+                <li class="talk" data-find="noah day quantifying the influence of the marginal ice zone on antarctic sea ice using a coupled ocean–sea ice–wave model ocean surface waves impact antarctic sea ice through wave-induced fracture, enhanced upper-ocean mixing, and other coupled processes, yet these interactions remain largely absent from ocean and climate models. here we present a newly developed fully coupled ocean–sea ice–wave configuration within australia’s next-generation ocean model (access-om3), and assess the importance of wave coupling for antarctic sea ice. a hierarchy of simulations with progressively increasing levels of wave coupling is used to isolate the importance of linking ocean surface waves, the upper ocean, and sea ice. by identifying the dominant feedbacks, this work demonstrates the value of explicitly representing ocean surface waves in coupled ocean models and highlights the interactions that should be prioritised in future modelling efforts.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">13:30–14:00</span><span class="who">Noah Day</span><span class="ttl">Quantifying the influence of the marginal ice zone on Antarctic sea ice using a coupled ocean–sea ice–wave model</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>Ocean surface waves impact Antarctic sea ice through wave-induced fracture, enhanced upper-ocean mixing, and other coupled processes, yet these interactions remain largely absent from ocean and climate models. Here we present a newly developed fully coupled ocean–sea ice–wave configuration within Australia’s next-generation ocean model (ACCESS-OM3), and assess the importance of wave coupling for Antarctic sea ice. A hierarchy of simulations with progressively increasing levels of wave coupling is used to isolate the importance of linking ocean surface waves, the upper ocean, and sea ice. By identifying the dominant feedbacks, this work demonstrates the value of explicitly representing ocean surface waves in coupled ocean models and highlights the interactions that should be prioritised in future modelling efforts.</p></div></div>
+                </li>
+                <li class="talk" data-find="siobhan o&#x27;farrell model assessment of winter extratropical cyclone short-term impacts on the antarctic marginal ice zone the antarctic marginal ice zone (miz) is the transitional region between the antarctic sea ice edge and the consolidated ice cover, which is characterised by the presence of ocean surface waves and relatively small ice floes, and is a region where atmospheric and oceanic processes strongly influence sea ice dynamics. extratropical polar cyclones intensify these processes by amplifying wave activity, transporting heat and moisture, and driving sea ice drift across the miz. in this study, the cice sea ice model with a wave propagation module is used at a 0.25° resolution to analyse statistically the impact of ~400 cyclones on the location of the antarctic ice edge and miz width. cyclone-driven winds cause sudden shifts of ~20 km in the ice edge location, through both compaction and expansion, with expansion events more effective in early winter and compaction later. miz widening is primarily driven by short-lived, major wave-induced breakup events, which increase the miz width by ~30 km on average, with greater breakup associated with greater widening. extreme ice edge changes result from the combined influence of sea ice drift and thermodynamics, whereas extreme miz width changes are primarily governed by the presence or absence of wave activity. these findings highlight the varied yet pronounced responses of the antarctic miz to extratropical cyclones and underscore the critical role of waves in shaping the boundary between the miz and the consolidated ice pack, reinforcing the need to account for wave impacts in future studies.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">14:05–14:35</span><span class="who">Siobhan O&#x27;Farrell</span><span class="ttl">Model Assessment of Winter Extratropical Cyclone Short-Term Impacts on the Antarctic Marginal Ice Zone</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>The Antarctic marginal ice zone (MIZ) is the transitional region between the Antarctic sea ice edge and the consolidated ice cover, which is characterised by the presence of ocean surface waves and relatively small ice floes, and is a region where atmospheric and oceanic processes strongly influence sea ice dynamics. Extratropical polar cyclones intensify these processes by amplifying wave activity, transporting heat and moisture, and driving sea ice drift across the MIZ. In this study, the CICE sea ice model with a wave propagation module is used at a 0.25° resolution to analyse statistically the impact of ~400 cyclones on the location of the Antarctic ice edge and MIZ width. Cyclone-driven winds cause sudden shifts of ~20 km in the ice edge location, through both compaction and expansion, with expansion events more effective in early winter and compaction later. MIZ widening is primarily driven by short-lived, major wave-induced breakup events, which increase the MIZ width by ~30 km on average, with greater breakup associated with greater widening. Extreme ice edge changes result from the combined influence of sea ice drift and thermodynamics, whereas extreme MIZ width changes are primarily governed by the presence or absence of wave activity. These findings highlight the varied yet pronounced responses of the Antarctic MIZ to extratropical cyclones and underscore the critical role of waves in shaping the boundary between the MIZ and the consolidated ice pack, reinforcing the need to account for wave impacts in future studies.</p></div></div>
+                </li>
+              </ul>
+            </div>
+        </section>
+
+        <section class="week card">
+          <h2>Week 2</h2>
+          <p class="week-span">Monday 28 September &ndash; Thursday 1 October</p>
+            <div class="day">
+              <h3>Monday 28 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="christina schallenberg phytoplankton in the miz: what are the growth conditions in the water column of the marginal ice zone? in this talk, i will explore what we know (and think we know) about the drivers of phytoplankton productivity in the miz, including the formation of marginal ice zone blooms. light and iron limitation are both expected to play important roles, and both will be modulated by the presence and melting of sea ice. however, their respective contributions, and their evolution through time, are poorly constrained. i will present preliminary results from an investigation using bgc-argo floats and am happy to discuss different ways of looking at this problem.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Christina Schallenberg</span><span class="ttl">Phytoplankton in the MIZ: What are the growth conditions in the water column of the marginal ice zone?</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>In this talk, I will explore what we know (and think we know) about the drivers of phytoplankton productivity in the MIZ, including the formation of marginal ice zone blooms. Light and iron limitation are both expected to play important roles, and both will be modulated by the presence and melting of sea ice. However, their respective contributions, and their evolution through time, are poorly constrained. I will present preliminary results from an investigation using BGC-Argo floats and am happy to discuss different ways of looking at this problem.</p></div></div>
+                </li>
+                <li class="talk empty" data-find="klaus meiners ">
+                  <button class="row" type="button"><span class="t">13:30–14:00</span><span class="who">Klaus Meiners</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+                <li class="talk empty" data-find="isaac klapper ">
+                  <button class="row" type="button"><span class="t">14:05–14:35</span><span class="who">Isaac Klapper</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Tuesday 29 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="aikaterini tavri remote sensing of the marginal ice zone marginal ice zones (mizs) are highly dynamic regions where sea ice is influenced by the atmosphere, ocean, and waves. mathematical models of these processes require observations across a range of spatial and temporal scales for validation. satellite remote sensing is especially valuable because it provides regular observations over large and remote polar regions. in this talk, i will discuss how satellite observations can be used to study dynamic processes in the miz. i will focus on variability in miz location and width in both the arctic and antarctic, differences in sea-ice concentration algorithms, and changes linked to wave-ice interactions. i will present results from several ongoing projects using observations from passive microwave radiometers, synthetic aperture radar (sar), and satellite altimeters. these examples will be used to discuss uncertainties and biases in sea-ice concentration products and their effects on sea-ice parameterizations used in climate models. my work shows how combining observations from different satellite sensors can provide a more complete picture of miz evolution and processes, while also offering useful constraints for mathematical models of sea-ice dynamics.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Aikaterini Tavri</span><span class="ttl">Remote sensing of the Marginal Ice Zone</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>Marginal Ice Zones (MIZs) are highly dynamic regions where sea ice is influenced by the atmosphere, ocean, and waves. Mathematical models of these processes require observations across a range of spatial and temporal scales for validation. Satellite remote sensing is especially valuable because it provides regular observations over large and remote polar regions.</p><p>In this talk, I will discuss how satellite observations can be used to study dynamic processes in the MIZ. I will focus on variability in MIZ location and width in both the Arctic and Antarctic, differences in sea-ice concentration algorithms, and changes linked to wave-ice interactions. I will present results from several ongoing projects using observations from passive microwave radiometers, synthetic aperture radar (SAR), and satellite altimeters. These examples will be used to discuss uncertainties and biases in sea-ice concentration products and their effects on sea-ice parameterizations used in climate models. My work shows how combining observations from different satellite sensors can provide a more complete picture of MIZ evolution and processes, while also offering useful constraints for mathematical models of sea-ice dynamics.</p></div></div>
+                </li>
+                <li class="talk" data-find="luke bennetts on differences between wave propagation through broken and unbroken ice covers i will present results from a mathematical model that aid interpretation of field and laboratory observations of the difference between wave propagation through the sea ice covered ocean, as it transitions from an unbroken to a broken state. i will show that the limiting cases of broken and unbroken ice covers can be captured analytically. i will then use these model predictions to adapt the wave propagation scheme in the classic wave–ice interaction model (wim), including the introduction of a term to reflect incident waves at an unbroken ice edge, and show how the changes influence wim predictions.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">13:30–14:00</span><span class="who">Luke Bennetts</span><span class="ttl">On differences between wave propagation through broken and unbroken ice covers</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>I will present results from a mathematical model that aid interpretation of field and laboratory observations of the difference between wave propagation through the sea ice covered ocean, as it transitions from an unbroken to a broken state. I will show that the limiting cases of broken and unbroken ice covers can be captured analytically. I will then use these model predictions to adapt the wave propagation scheme in the classic wave–ice interaction model (WIM), including the introduction of a term to reflect incident waves at an unbroken ice edge, and show how the changes influence WIM predictions.</p></div></div>
+                </li>
+                <li class="talk" data-find="phillip reid reducing sea-ice thickness in the antarctic miz due to sea ice/wave interaction: a proof-of-concept study the two main fluxes associated with melting sea ice within models are basal and lateral heat fluxes. massom et al. (2026) identifies a process of ocean waves/sea ice interaction within the miz that may be a missing factor, particularly during the sea ice retreat phase. the interaction is three sets of process involving &quot;wave flooding&quot;, &quot;wave pulverisation&quot; and &quot;wave greening&quot;, with these process leading to a change in sea ice albedo and enhanced melting. it is suggested that implementing these processes may aid in improving sea ice forecasting and climate model outlooks. here we explore a proof-of-concept study where we post-process coupled model forecasts and synthetically melt some of the sea ice based on the findings from this paper. initial results, presented here, show promise.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">14:05–14:35</span><span class="who">Phillip Reid</span><span class="ttl">Reducing sea-ice thickness in the Antarctic MIZ due to sea ice/wave interaction: A proof-of-concept study</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>The two main fluxes associated with melting sea ice within models are basal and lateral heat fluxes. Massom et al. (2026) identifies a process of ocean waves/sea ice interaction within the MIZ that may be a missing factor, particularly during the sea ice retreat phase. The interaction is three sets of process involving &quot;wave flooding&quot;, &quot;wave pulverisation&quot; and &quot;wave greening&quot;, with these process leading to a change in sea ice albedo and enhanced melting. It is suggested that implementing these processes may aid in improving sea ice forecasting and climate model outlooks. Here we explore a proof-of-concept study where we post-process coupled model forecasts and synthetically melt some of the sea ice based on the findings from this paper. Initial results, presented here, show promise.</p></div></div>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Wednesday 30 September</h3>
+              <ul class="talks">
+                <li class="talk" data-find="gillian cheong modeling the sea ice response to antarctic cyclones using brittle dynamics atmospheric cyclones are key elements of atmospheric circulation in the southern ocean. they play a critical role in driving antarctic sea ice variability and modulating air-ocean fluxes that can influence the sea ice mass balance. the influence of cyclones may be poorly captured in current sea-ice models as the elastic-viscous-plastic (evp) rheology used to parameterise sea ice dynamics does not simulate realistic representations of local-scale sea ice deformation. here, we evaluate the performance of the implementation of a brittle bingham-maxwell (bbm) rheology in a fully lagrangian, dynamic-thermodynamic sea-ice model, nextsim, in simulating the localised sea ice response to atmospheric cyclones. validation with eulerian models and observations are also discussed.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Gillian Cheong</span><span class="ttl">Modeling the sea ice response to Antarctic cyclones using brittle dynamics</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>Atmospheric cyclones are key elements of atmospheric circulation in the Southern Ocean. They play a critical role in driving Antarctic sea ice variability and modulating air-ocean fluxes that can influence the sea ice mass balance. The influence of cyclones may be poorly captured in current sea-ice models as the elastic-viscous-plastic (EVP) rheology used to parameterise sea ice dynamics does not simulate realistic representations of local-scale sea ice deformation. Here, we evaluate the performance of the implementation of a brittle Bingham-Maxwell (BBM) rheology in a fully Lagrangian, dynamic-thermodynamic sea-ice model, neXtSIM, in simulating the localised sea ice response to atmospheric cyclones. Validation with Eulerian models and observations are also discussed.</p></div></div>
+                </li>
+                <li class="talk" data-find="mike meylan modelling ice breaking i will give an overview of a numerical method to simulate the interactions of waves with ice and to model the subsequent break up. the immediate application is to ice break up simulations in wave tanks or to similar field experiments, for example the breakup of ice from transitory ship waves.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">13:30–14:00</span><span class="who">Mike Meylan</span><span class="ttl">Modelling Ice Breaking</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>I will give an overview of a numerical method to simulate the interactions of waves with ice and to model the subsequent break up. The immediate application is to ice break up simulations in wave tanks or to similar field experiments, for example the breakup of ice from transitory ship waves.</p></div></div>
+                </li>
+                <li class="talk" data-find="stuart hawkins application of advanced wave scattering algorithms for scattering by ice floes simulations of multiple wave scattering by large assemblies of polydisperse ice floes can provide valuable information about water wave transport in the marginal ice zone, and form the basis of inversion algorithms to monitor ice. application of the self-consistent interaction theory to the scattering problem leads to solution of large dense linear systems with complexity growing as the square of the number of floes. this complexity is due to coupling between the floes and severely limits the number of floes that can be simulated. in this work we apply the fast multipole method (fmm) to compute the interactions between the floes with only linear complexity, facilitating computation of the scattering kernel for assemblies with tens of thousands of floes.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">14:05–14:35</span><span class="who">Stuart Hawkins</span><span class="ttl">Application of advanced wave scattering algorithms for scattering by ice floes</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>Simulations of multiple wave scattering by large assemblies of polydisperse ice floes can provide valuable information about water wave transport in the marginal ice zone, and form the basis of inversion algorithms to monitor ice. Application of the self-consistent interaction theory to the scattering problem leads to solution of large dense linear systems with complexity growing as the square of the number of floes. This complexity is due to coupling between the floes and severely limits the number of floes that can be simulated. In this work we apply the Fast Multipole Method (FMM) to compute the interactions between the floes with only linear complexity, facilitating computation of the scattering kernel for assemblies with tens of thousands of floes.</p></div></div>
+                </li>
+              </ul>
+            </div>
+            <div class="day">
+              <h3>Thursday 1 October</h3>
+              <ul class="talks">
+                <li class="talk" data-find="alex fraser the big picture: mapping wave ice interaction from satellite altimetry while a sea ice-concentration-based marginal ice zone (miz) definition is convenient to apply to daily maps of sea-ice concentration, resulting in a long time series, the fundamental disconnect between concentration and wave passage in ice forces a rethink of this technique. satellite altimetry is demonstrably sensitive to the passage of waves in ice — both for laser altimetry where the narrow beam allows resolution of individual waves, and for radar altimetry where individual waves are not resolved but bulk statistics indicate the presence of waves in ice — facilitating large-scale wave-miz observations. i will briefly cover some recent work on using icesat-2 and altika to study the antarctic wave-affected miz, in the context of other papers shedding new light on the wave-affected miz using satellite altimetry. now that techniques are established, the focus is on &quot;what comes next&quot;, including new research toward: higher resolution radar observations (the swot satellite); forming a longer-term record (how far back in time can we go?); combining instruments to fill gaps; and what geophysical insights can be gained from this research area.">
+                  <button class="row" type="button" aria-expanded="false"><span class="t">09:45–10:45</span><span class="who">Alex Fraser</span><span class="ttl">The big picture: mapping wave ice interaction from satellite altimetry</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                  <div class="abs" hidden><div><p>While a sea ice-concentration-based marginal ice zone (MIZ) definition is convenient to apply to daily maps of sea-ice concentration, resulting in a long time series, the fundamental disconnect between concentration and wave passage in ice forces a rethink of this technique. Satellite altimetry is demonstrably sensitive to the passage of waves in ice — both for laser altimetry where the narrow beam allows resolution of individual waves, and for radar altimetry where individual waves are not resolved but bulk statistics indicate the presence of waves in ice — facilitating large-scale wave-MIZ observations. I will briefly cover some recent work on using ICESat-2 and AltiKa to study the Antarctic wave-affected MIZ, in the context of other papers shedding new light on the wave-affected MIZ using satellite altimetry. Now that techniques are established, the focus is on &quot;what comes next&quot;, including new research toward: higher resolution radar observations (the SWOT satellite); forming a longer-term record (how far back in time can we go?); combining instruments to fill gaps; and what geophysical insights can be gained from this research area.</p></div></div>
+                </li>
+                <li class="talk empty" data-find="nathan teder ">
+                  <button class="row" type="button"><span class="t">13:30–14:00</span><span class="who">Nathan Teder</span><span class="ttl pending">Title to come</span><span class="chev" aria-hidden="true">&#9656;</span></button>
+                </li>
+              </ul>
+            </div>
+        </section>
+
+        <p class="none" id="empty" hidden>No talk matches that search.</p>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://cryosphericsciences.org/activities/miz/" target="_blank">IACS Page</a>
+            <a href="https://www.matrix-inst.org.au/events/mathematical-modelling-of-dynamic-processes-in-the-marginal-ice-zone/" target="_blank">MATRIX Event</a>
+            <a href="mailto:noa.kraitzman@mq.edu.au">Contact</a>
+        </div>
+        <p>&copy; 2024-2026 MIZ Dynamics Working Group | <a href="mailto:noa.kraitzman@mq.edu.au">noa.kraitzman@mq.edu.au</a></p>
+    </footer>
+
+<script>
+(function () {
+  "use strict";
+  var TALKS = [{"speaker": "Vernon Squire", "date": "2026-09-21", "start": "09:45", "end": "10:45"}, {"speaker": "Kenneth Golden", "date": "2026-09-22", "start": "09:45", "end": "10:45"}, {"speaker": "Nico Mokus", "date": "2026-09-22", "start": "13:30", "end": "14:00"}, {"speaker": "Yawei Chen", "date": "2026-09-22", "start": "14:05", "end": "14:35"}, {"speaker": "Rob Massom", "date": "2026-09-23", "start": "09:45", "end": "10:45"}, {"speaker": "Ian Eisenman", "date": "2026-09-23", "start": "13:30", "end": "14:00"}, {"speaker": "Patricia Langhorne", "date": "2026-09-23", "start": "14:05", "end": "14:35"}, {"speaker": "Waylon Wu", "date": "2026-09-24", "start": "09:45", "end": "10:45"}, {"speaker": "Hardik Gaur", "date": "2026-09-24", "start": "13:30", "end": "14:00"}, {"speaker": "Noa Kraitzman", "date": "2026-09-24", "start": "14:05", "end": "14:35"}, {"speaker": "Guillaume Boutin", "date": "2026-09-25", "start": "09:45", "end": "10:45"}, {"speaker": "Noah Day", "date": "2026-09-25", "start": "13:30", "end": "14:00"}, {"speaker": "Siobhan O'Farrell", "date": "2026-09-25", "start": "14:05", "end": "14:35"}, {"speaker": "Christina Schallenberg", "date": "2026-09-28", "start": "09:45", "end": "10:45"}, {"speaker": "Klaus Meiners", "date": "2026-09-28", "start": "13:30", "end": "14:00"}, {"speaker": "Isaac Klapper", "date": "2026-09-28", "start": "14:05", "end": "14:35"}, {"speaker": "Aikaterini Tavri", "date": "2026-09-29", "start": "09:45", "end": "10:45"}, {"speaker": "Luke Bennetts", "date": "2026-09-29", "start": "13:30", "end": "14:00"}, {"speaker": "Phillip Reid", "date": "2026-09-29", "start": "14:05", "end": "14:35"}, {"speaker": "Gillian Cheong", "date": "2026-09-30", "start": "09:45", "end": "10:45"}, {"speaker": "Mike Meylan", "date": "2026-09-30", "start": "13:30", "end": "14:00"}, {"speaker": "Stuart Hawkins", "date": "2026-09-30", "start": "14:05", "end": "14:35"}, {"speaker": "Alex Fraser", "date": "2026-10-01", "start": "09:45", "end": "10:45"}, {"speaker": "Nathan Teder", "date": "2026-10-01", "start": "13:30", "end": "14:00"}];
+
+  var items = Array.prototype.slice.call(document.querySelectorAll("li.talk"));
+
+  /* expand and collapse */
+  function setOpen(li, open) {
+    var btn = li.querySelector("button.row"), abs = li.querySelector(".abs");
+    if (!abs) return;
+    li.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    abs.hidden = !open;
+  }
+  items.forEach(function (li) {
+    var btn = li.querySelector("button.row");
+    if (!li.querySelector(".abs")) return;
+    btn.addEventListener("click", function () {
+      setOpen(li, li.querySelector(".abs").hidden);
+    });
+  });
+
+  var allBtn = document.getElementById("all"), expanded = false;
+  allBtn.addEventListener("click", function () {
+    expanded = !expanded;
+    items.forEach(function (li) { setOpen(li, expanded); });
+    allBtn.textContent = expanded ? "Collapse all" : "Expand all";
+  });
+
+  /* search */
+  var q = document.getElementById("q");
+  function filter() {
+    var term = q.value.trim().toLowerCase(), n = 0;
+    items.forEach(function (li) {
+      var hit = !term || li.dataset.find.indexOf(term) !== -1;
+      li.hidden = !hit;
+      if (hit) n++;
+    });
+    document.querySelectorAll(".day").forEach(function (d) {
+      d.hidden = !d.querySelector("li.talk:not([hidden])");
+    });
+    document.querySelectorAll("section.week").forEach(function (s) {
+      s.hidden = !s.querySelector("li.talk:not([hidden])");
+    });
+    document.getElementById("empty").hidden = n !== 0;
+  }
+  q.addEventListener("input", filter);
+
+  /* on now and next. Times are pinned to Creswick, not the visitor's clock. */
+  var OFFSET = 10 * 3600000;
+  function at(t) {
+    var d = t.date.split("-").map(Number), s = t.start.split(":").map(Number);
+    return Date.UTC(d[0], d[1] - 1, d[2], s[0], s[1]) - OFFSET;
+  }
+  function until(t) {
+    var d = t.date.split("-").map(Number), e = t.end.split(":").map(Number);
+    return Date.UTC(d[0], d[1] - 1, d[2], e[0], e[1]) - OFFSET;
+  }
+  function live() {
+    var now = Date.now(), bar = document.getElementById("nowbar");
+    if (!TALKS.length) return;
+    if (now < at(TALKS[0]) - 36e5 || now > until(TALKS[TALKS.length - 1]) + 36e5) return;
+    var i, cur = -1, nxt = -1;
+    for (i = 0; i < TALKS.length; i++) {
+      if (now >= at(TALKS[i]) && now < until(TALKS[i])) cur = i;
+      if (nxt === -1 && at(TALKS[i]) > now) nxt = i;
+    }
+    function mark(i, cls, word) {
+      if (i === -1) return null;
+      var li = items[i];
+      li.classList.add(cls);
+      var t = document.createElement("span");
+      t.className = "tag";
+      t.textContent = word;
+      var who = li.querySelector(".who");
+      /* a bare appendChild runs the tag into the name in the text layer, which is what a
+         screen reader reads, so the separating space is explicit. */
+      who.appendChild(document.createTextNode(" "));
+      who.appendChild(t);
+      return TALKS[i];
+    }
+    var a = mark(cur, "is-now", "on now"), b = mark(nxt, "is-next", "next");
+    if (!a && !b) return;
+    function chunk(word, t, tail) {
+      var strong = document.createElement("b");
+      strong.textContent = word;
+      bar.appendChild(strong);
+      bar.appendChild(document.createTextNode(" " + t.speaker + tail));
+    }
+    if (a) chunk("On now", a, ", until " + a.end + ". ");
+    if (b) chunk("Next", b, " at " + b.start + ". ");
+    var target = items[cur !== -1 ? cur : nxt];
+    var jump = document.createElement("a");
+    jump.href = "#";
+    jump.textContent = "Jump to it";
+    jump.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      target.scrollIntoView({block: "center", behavior: "smooth"});
+    });
+    bar.appendChild(jump);
+    bar.hidden = false;
+  }
+  try { live(); } catch (e) { /* a clock problem must not break the page */ }
+})();
+</script>
+
+</body>
+</html>
